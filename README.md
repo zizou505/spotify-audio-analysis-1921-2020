@@ -45,23 +45,19 @@ cd spotify-audio-analysis-1921-2020
 python -m venv .venv
 ```
 
-Activate the virtual environment:
-
-**Windows PowerShell**
+Install the dependencies and start the dashboard from the repository root.
+On Windows, call the virtual environment's Python directly; this avoids
+PowerShell activation-policy issues.
 
 ```powershell
-.\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe -m streamlit run app.py
 ```
 
-**macOS/Linux**
+On macOS/Linux, activate the environment and run the same app:
 
 ```bash
 source .venv/bin/activate
-```
-
-Install dependencies and start the dashboard from the repository root:
-
-```bash
 python -m pip install -r requirements.txt
 streamlit run app.py
 ```
