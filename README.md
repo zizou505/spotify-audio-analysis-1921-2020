@@ -1,234 +1,90 @@
-# spotify
-# 🎵 Spotify Analytics Dashboard
+# Spotify Audio Analysis (1921-2020)
 
-A professional Business Intelligence and Data Analytics platform built with **Python**, **Pandas**, **Plotly**, and **Streamlit** to explore and analyze more than **600,000 Spotify tracks**.
+A Python project for exploring Spotify track data through an interactive Streamlit dashboard, data-preparation scripts, and standalone AI analysis examples.
 
-This project transforms raw Spotify data into interactive dashboards that help users discover music trends, top artists, popular songs, and key streaming insights.
+## Dashboard features
 
----
+The Streamlit app (`app.py`) has three pages:
 
-## 🚀 Features
+- **Home Dashboard** — track and artist counts, average popularity, top song, top artists and songs, popularity trends, histograms, and a top-tracks table.
+- **Music Explorer** — search tracks by name, filter by popularity, and view track details.
+- **Audio Analysis** — explore correlations between audio features and view a histogram for a selected feature.
 
-### 📊 Executive Dashboard
-- Total Tracks Overview
-- Total Artists
-- Total Albums
-- Average Popularity Score
-- Dataset Health Metrics
-- Interactive KPIs
+## Project structure
 
-### 🎤 Artist Analytics
-- Top 100 Artists by Popularity
-- Most Productive Artists
-- Artist Popularity Distribution
-- Artist Ranking System
-
-### 🎶 Song Analytics
-- Top 200 Songs
-- Top 300 Songs Interactive Table
-- Most Popular Tracks
-- Track Popularity Trends
-
-### 📈 Popularity Analysis
-- Popularity Histogram
-- Popularity Distribution
-- Popular vs Non-Popular Songs
-- Trend Analysis
-
-### 🔍 Advanced Filtering
-Users can filter data by:
-
-- Artist
-- Song
-- Album
-- Release Year
-- Popularity Range
-- Genre (if available)
-
-### 📉 Interactive Visualizations
-Built using Plotly:
-
-- Bar Charts
-- Line Charts
-- Histograms
-- Pie Charts
-- Scatter Plots
-- Heatmaps
-
----
-
-# 🏗️ Project Structure
-
-```
-spotify/
-│
+```text
+.
 ├── app.py
-│
 ├── data/
+│   ├── artists.csv
+│   ├── dict_artists.json
 │   └── tracks.csv
-│
 ├── level1_data_preparation/
 │   ├── data_cleaning.py
 │   └── feature_engineering.py
-│
 ├── level2_dashboard/
+│   ├── audio_analysis.py
 │   ├── home_dashboard.py
-│   ├── music_explorer.py
-│   └── audio_analysis.py
-│
+│   └── music_explorer.py
+├── level3_ai/
+│   ├── ai_insights.py
+│   ├── popularity_prediction.py
+│   └── recommendation_system.py
 ├── requirements.txt
-│
+├── test_dataset.py
 └── README.md
 ```
 
----
+## Setup and run
 
-# 🛠️ Technologies Used
-
-| Technology | Purpose |
-|------------|----------|
-| Python | Core Development |
-| Pandas | Data Processing |
-| NumPy | Numerical Operations |
-| Plotly | Interactive Visualizations |
-| Streamlit | Web Interface |
-| Matplotlib | Additional Charts |
-| Seaborn | Statistical Graphs |
-
----
-
-# 📦 Installation
-
-Clone the repository:
+Clone the repository and install its dependencies:
 
 ```bash
-git clone https://github.com/zizou505/spotify.git
-cd spotify
+git clone https://github.com/zizou505/spotify-audio-analysis-1921-2020.git
+cd spotify-audio-analysis-1921-2020
+python -m venv .venv
 ```
 
-Create a virtual environment:
+Activate the virtual environment:
 
-```bash
-python -m venv venv
+**Windows PowerShell**
+
+```powershell
+.\.venv\Scripts\Activate.ps1
 ```
 
-Activate it:
-
-### Windows
+**macOS/Linux**
 
 ```bash
-venv\Scripts\activate
+source .venv/bin/activate
 ```
 
-### Linux / MacOS
+Install dependencies and start the dashboard from the repository root:
 
 ```bash
-source venv/bin/activate
-```
-
-Install dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-# ▶️ Run the Application
-
-Start the Streamlit dashboard:
-
-```bash
+python -m pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The application will open automatically in:
+The app reads the track data from `data/tracks.csv`.
 
+## Dataset inspection
+
+Run this helper from the repository root to print the track dataset's columns and first five rows:
+
+```bash
+python test_dataset.py
 ```
-http://localhost:8501
+
+## Level 3 AI examples
+
+The scripts in `level3_ai/` are standalone examples; they are not dashboard pages. They expect a processed dataset at `data/processed/final_dataset.csv`, which is not included in the repository. The CSV should contain the columns used by each script: `decade`, `popularity`, `danceability`, `energy`, `tempo`, `valence`, and `acousticness`.
+
+After providing that file, run a script from the `level3_ai` directory, for example:
+
+```bash
+cd level3_ai
+python ai_insights.py
 ```
 
----
-
-# 📊 Dataset Information
-
-Dataset contains approximately:
-
-- 600,000 Spotify Tracks
-- Artist Information
-- Album Information
-- Release Dates
-- Popularity Scores
-- Audio Metadata
-
-Example fields:
-
-| Column | Description |
-|----------|----------|
-| id | Track ID |
-| name | Track Name |
-| artists | Artist Name |
-| album_name | Album |
-| release_date | Release Date |
-| popularity | Spotify Popularity Score |
-| duration_ms | Song Duration |
-
----
-
-# 🎯 Business Objectives
-
-The dashboard helps answer questions such as:
-
-- Who are the most popular artists?
-- Which songs dominate Spotify popularity rankings?
-- How does popularity evolve over time?
-- What characteristics define successful tracks?
-- Which artists produce the highest number of songs?
-
----
-
-# 📸 Dashboard Preview
-
-### Home Dashboard
-- KPI Cards
-- Top Artists
-- Top Songs
-- Dataset Summary
-
-### Analytics Dashboard
-- Popularity Analysis
-- Trend Exploration
-- Artist Rankings
-- Song Rankings
-
-### Interactive Filters
-- Real-time filtering
-- Dynamic visual updates
-
----
-
-# 🔮 Future Improvements
-
-- Recommendation Engine
-- Machine Learning Popularity Prediction
-- Genre Analytics
-- Real-time Spotify API Integration
-- User Authentication
-- Export Reports (PDF/Excel)
-
----
-
-# 👨‍💻 Author
-
-**Mohamed Aziz Mejri**
-
-Data Analytics & Business Intelligence Project
-
-GitHub:
-https://github.com/zizou505
-
----
-
-# 📄 License
-
-This project is intended for educational and portfolio purposes.
+The other scripts can be run the same way using `popularity_prediction.py` or `recommendation_system.py`.
