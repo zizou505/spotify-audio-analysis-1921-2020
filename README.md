@@ -65,25 +65,16 @@ spotify/
 ├── app.py
 │
 ├── data/
-│   └── spotify_dataset.csv
+│   └── tracks.csv
 │
-├── level_1/
-│   ├── data_loading.py
+├── level1_data_preparation/
 │   ├── data_cleaning.py
+│   └── feature_engineering.py
 │
-├── level_2/
-│   ├── artist_analysis.py
-│   ├── song_analysis.py
-│   ├── popularity_analysis.py
-│
-├── level_3/
-│   ├── dashboard_components.py
-│   ├── advanced_filters.py
-│   ├── visualizations.py
-│
-├── assets/
-│   ├── logo.png
-│   └── styles.css
+├── level2_dashboard/
+│   ├── home_dashboard.py
+│   ├── music_explorer.py
+│   └── audio_analysis.py
 │
 ├── requirements.txt
 │
